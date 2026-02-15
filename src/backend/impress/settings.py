@@ -1068,10 +1068,12 @@ class Production(Base):
     # The machine hostname is added by default,
     # it makes the application pingable by a load balancer on the same machine by example
     ALLOWED_HOSTS = [
-        *values.ListValue([], environ_name="ALLOWED_HOSTS"),
-        gethostbyname(gethostname()),
+        "*"
+    #    *values.ListValue([], environ_name="ALLOWED_HOSTS"),
+    #    gethostbyname(gethostname()),
     ]
-    CSRF_TRUSTED_ORIGINS = values.ListValue([])
+    #CSRF_TRUSTED_ORIGINS = values.ListValue([])
+    CSRF_TRUSTED_ORIGINS = ["https://docsfp.zeabur.app"]
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
 
